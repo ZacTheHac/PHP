@@ -27,7 +27,21 @@ function isBalanced($input){ //verifies parenthesis are balanced and appear in a
     }
 }
 
+function test_isBalanced(){
 
+    assert_options(ASSERT_BAIL,1); //I don't want the code to continue if a test fails
+    
+    assert(isBalanced("(((())))"),"Simple Balance");
+    assert(isBalanced("()()"),"Not nested balanced");
+    assert(isBalanced("()()((()))(()") == FALSE,"Not nested imbalanced");
+    assert(isBalanced("))))((((") == FALSE,"Wrong order balanced");
+    assert(isBalanced(""),"enpty string");
+    assert(isBalanced("(asdf(asdf234t(234g(234tn)3567 m)234bt)23b46xsdfa)"),"simple balance + random fill characters");
+    assert(isBalanced("(q23br(q23b 63(q3 46tq34(q34 ytgau) 8675ui)q345 awsdfe) 89") == FALSE,"unbalanced + random fill characters");
+
+}
+
+test_isBalanced();
 $user_input = readline('Insert a string containing mixed parenthesis: ');
 var_dump($user_input); //sanity check on the input
 var_dump(isBalanced($user_input)); //dumps the returned value to console
