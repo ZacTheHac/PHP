@@ -1,6 +1,11 @@
 <?php
 //this function will attempt to compress a string using the pattern aaabcccc => a3b1c4
 //if the resulting string would be the same length or longer than the original, or if it contains a number, it will return the original string
+
+//for processing of large files, it would be possible to make an edit to stream in the files, and even multi-thread it.
+//the only thing to verify would be that the first and last characters of each compressed chunk weren't the same as the previous, and if they were to sum them together.
+//then verify that each chunk was written in the correct order.
+//this could be easily handled by an extra thread whose job is to oversee the other threads, stitch their outputs together, and write to the compressed file.
 function CompressString($str){
     $strLen = strlen($str);
     if(preg_match('~[0-9]~', $str)===1 or $strLen <= 2){

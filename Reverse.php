@@ -11,6 +11,8 @@ function reverseString($input){
 }
 
 function test(){
+    assert(reverseString("")=="","Blank input");
+    assert(reverseString("a")=="a","single character");
     assert(reverseString("1234567890")=="0987654321","numbers even");
     assert(reverseString("123456789")=="987654321","numbers odd");
     assert(reverseString("hello, this is a test string.")==".gnirts tset a si siht ,olleh","Sentence odd");
